@@ -1,0 +1,292 @@
+{
+  "seed": 0,
+  "learning_rate": 0.001,
+  "synthetic_families": {
+    "recolour": "Different source and target colours.",
+    "rotate": "One, two or three quarter-turns.",
+    "double_canvas": "Canvas expansion by factor two or three."
+  },
+  "comparison_scope": "One seed; equal update counts, not equal compute time.",
+  "task_split": {
+    "passed": true,
+    "training_tasks": 320,
+    "validation_tasks": 80,
+    "training_files": 640,
+    "validation_files": 160,
+    "overlapping_original_task_ids": 0
+  },
+  "small_fitting_checks": {
+    "copy": {
+      "passed": true,
+      "criterion": "At least 99% correct cells and all sizes correct.",
+      "grid_size": [
+        6,
+        6
+      ],
+      "training_examples": 5,
+      "updates": 100,
+      "initial": {
+        "episodes": 5,
+        "target_canvas_cell_accuracy": 1.0,
+        "size_accuracy": 0.0,
+        "exact_grid_accuracy": 0.0,
+        "correct_sizes": 0,
+        "correct_grids": 0,
+        "mean_loss": 8.252232432365417,
+        "losses": {
+          "colour": 1.4624149560928346,
+          "height": 2.871937799453735,
+          "width": 3.9178796768188477
+        }
+      },
+      "final": {
+        "episodes": 5,
+        "target_canvas_cell_accuracy": 1.0,
+        "size_accuracy": 1.0,
+        "exact_grid_accuracy": 1.0,
+        "correct_sizes": 5,
+        "correct_grids": 5,
+        "mean_loss": 0.0010038616165275016,
+        "losses": {
+          "colour": 0.0010004999174270778,
+          "height": 1.7881377516459906e-06,
+          "width": 1.57356134877773e-06
+        }
+      }
+    },
+    "recolour": {
+      "passed": true,
+      "criterion": "At least 99% correct cells and all sizes correct.",
+      "grid_size": [
+        6,
+        6
+      ],
+      "training_examples": 5,
+      "updates": 100,
+      "initial": {
+        "episodes": 5,
+        "target_canvas_cell_accuracy": 0.8666666666666667,
+        "size_accuracy": 0.0,
+        "exact_grid_accuracy": 0.0,
+        "correct_sizes": 0,
+        "correct_grids": 0,
+        "mean_loss": 8.444187927246094,
+        "losses": {
+          "colour": 1.6038638591766357,
+          "height": 2.8551477909088137,
+          "width": 3.9851762771606447
+        }
+      },
+      "final": {
+        "episodes": 5,
+        "target_canvas_cell_accuracy": 1.0,
+        "size_accuracy": 1.0,
+        "exact_grid_accuracy": 1.0,
+        "correct_sizes": 5,
+        "correct_grids": 5,
+        "mean_loss": 0.0008160977507941425,
+        "losses": {
+          "colour": 0.0008160977507941425,
+          "height": 0.0,
+          "width": 0.0
+        }
+      }
+    }
+  },
+  "encoder_comparison": {
+    "1": {
+      "encoder_passes": 1,
+      "trainable_parameters": 148581,
+      "training_updates": 1000,
+      "training_and_periodic_validation_seconds": 45.60180608299561,
+      "validation_scope": "New grids from the represented synthetic rule families.",
+      "without_rule_adaptation": {
+        "recolour": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.8287037037037037,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.967444151639938,
+          "losses": {
+            "colour": 1.1522671282291412,
+            "height": 1.8874881505966186,
+            "width": 1.9276888728141786
+          }
+        },
+        "rotate": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.09688581314878893,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 6.171957623958587,
+          "losses": {
+            "colour": 2.464842963218689,
+            "height": 2.005732703208923,
+            "width": 1.7013819575309754
+          }
+        },
+        "double_canvas": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.9981566820276497,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.394253796711564,
+          "losses": {
+            "colour": 0.06321839727461338,
+            "height": 2.2142284154891967,
+            "width": 2.116806983947754
+          }
+        }
+      },
+      "with_rule_adaptation": {
+        "recolour": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.8287037037037037,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.9491353869438175,
+          "losses": {
+            "colour": 1.1441675782203675,
+            "height": 1.8832055807113648,
+            "width": 1.921762228012085
+          }
+        },
+        "rotate": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.09688581314878893,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 6.156257128715515,
+          "losses": {
+            "colour": 2.4610729455947875,
+            "height": 2.0006018400192263,
+            "width": 1.6945823431015015
+          }
+        },
+        "double_canvas": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.9972350230414746,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.383495657891035,
+          "losses": {
+            "colour": 0.06436930224299431,
+            "height": 2.218023359775543,
+            "width": 2.1011029958724974
+          }
+        }
+      },
+      "adaptation_steps": 3,
+      "model_weights_unchanged_by_adaptation": true
+    },
+    "3": {
+      "encoder_passes": 3,
+      "trainable_parameters": 148581,
+      "training_updates": 1000,
+      "training_and_periodic_validation_seconds": 48.39037733399891,
+      "validation_scope": "New grids from the represented synthetic rule families.",
+      "without_rule_adaptation": {
+        "recolour": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.8287037037037037,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.835948616266251,
+          "losses": {
+            "colour": 1.0289075791835784,
+            "height": 1.871854567527771,
+            "width": 1.935186469554901
+          }
+        },
+        "rotate": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.10380622837370242,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 6.457352161407471,
+          "losses": {
+            "colour": 2.7633752107620237,
+            "height": 1.950538456439972,
+            "width": 1.7434384942054748
+          }
+        },
+        "double_canvas": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.9967741935483871,
+          "size_accuracy": 0.1,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 1,
+          "correct_grids": 0,
+          "mean_loss": 4.549506152421236,
+          "losses": {
+            "colour": 0.18107966259121894,
+            "height": 2.1547170877456665,
+            "width": 2.2137094020843504
+          }
+        }
+      },
+      "with_rule_adaptation": {
+        "recolour": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.8287037037037037,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 4.821390771865845,
+          "losses": {
+            "colour": 1.019679319858551,
+            "height": 1.8711344122886657,
+            "width": 1.930577039718628
+          }
+        },
+        "rotate": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.10034602076124567,
+          "size_accuracy": 0.0,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 0,
+          "correct_grids": 0,
+          "mean_loss": 6.424027693271636,
+          "losses": {
+            "colour": 2.739807891845703,
+            "height": 1.9461296200752258,
+            "width": 1.738090181350708
+          }
+        },
+        "double_canvas": {
+          "episodes": 10,
+          "target_canvas_cell_accuracy": 0.9967741935483871,
+          "size_accuracy": 0.1,
+          "exact_grid_accuracy": 0.0,
+          "correct_sizes": 1,
+          "correct_grids": 0,
+          "mean_loss": 4.513022918999195,
+          "losses": {
+            "colour": 0.17293978482484818,
+            "height": 2.1470885634422303,
+            "width": 2.192994570732117
+          }
+        }
+      },
+      "adaptation_steps": 3,
+      "model_weights_unchanged_by_adaptation": true
+    }
+  }
+}
