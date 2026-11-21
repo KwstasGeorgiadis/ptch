@@ -111,51 +111,39 @@ def plot_examples(model, support, queries, first_number, set_name):
 
 
 def main():
-    checkpoint = (
-        Path(__file__).resolve().parents[2]
-        / "runs"
-        / "professor"
-        / "encoder_cycles_3.pt"
-    )
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--set", choices=("unseen", "train"), default="unseen")
+    parser.add_argument("--start", type=int, default=1, help="First example number (1-based)")
+    parser.add_argument("--count", type=int, default=3)
+    parser.add_argument("--device", default="cpu")
+    parser.add_argument("--save", type=Path)
+    parser.add_argument("--no-show", action="store_true")
+    args = parser.parse_args()
 
-    saved = torch.load(
-        checkpoint,
-        map_location="cpu",
-        weights_only=True,
-    )
+    checkpoint = Path(__file__).resolve().parents[2] / "runs" / "double_canvas_size_only.pt"
+    saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    key = "validation_queries" if args.set == "unseen" else "queries"
+    pool = saved[key]
+    if not 1 <= args.start <= len(pool) or args.count < 1:
+        parser.error(f"Use --start 1 to {len(pool)} and --count at least 1.")
+    queries = pool[args.start - 1:args.start - 1 + args.count]
 
-    model = Architecture().to("mps")
-    model.trm.rule_cycles = saved["rule_cycles"]
+    model = Architecture().to(args.device)
     model.load_state_dict(saved["model_state_dict"])
-    model.eval()
-
-    print(f"Loaded: {checkpoint}", flush=True)
-
-    # Show one saved validation example from each rule family.
-    family = "add_one"  # ή "recolour" ή "rotate"
-    example = 8          # διάλεξε από 1 έως 10
-
-    episodes = [
-        episode
-        for episode in saved["evaluation_episodes"]
-        if episode["family"] == family
-    ]
-    episode = episodes[example - 1]
-
-    fig = plot_examples(
-        model,
-        episode["support"],
-        [episode["query"]],
-        first_number=example,
-        set_name=family,
+    print(f"Loaded {checkpoint} | trained on {len(saved['queries'])} examples")
+    fig = plot_examples(model, saved["support"], queries, args.start, args.set.capitalize())
+    fig.suptitle(
+        f"Saved add-one model · {len(saved['queries'])} training examples\n"
+        f"{args.set.capitalize()} examples {args.start}–{args.start + len(queries) - 1}",
+        fontsize=16, y=0.99,
     )
-
-    fig.suptitle(f"Validation — {family}", fontsize=16)
-    output_file = checkpoint.parent / f"preview_{family}_{example}.png"
-    fig.savefig(output_file, dpi=150, facecolor="white")
-    print(f"Saved: {output_file}", flush=True)
-
-    plt.show(block=True)
+    if args.save:
+        fig.savefig(args.save, dpi=150, facecolor="white")
+        print(f"Saved figure: {args.save.resolve()}")
+    if not args.no_show:
+        plt.show()
+    else:
+        plt.close(fig)
 
 
 if __name__ == "__main__":

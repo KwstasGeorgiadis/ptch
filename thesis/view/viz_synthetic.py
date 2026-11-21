@@ -5,7 +5,7 @@ import torch
 from ..model import Architecture
 from .visualization import plot_predictions
 
-MODEL_FILE = Path("runs/arc_training.pt")#("runs/add_one.pt")
+MODEL_FILE = Path("runs/double_canvas_fresh.pt")#("runs/add_one.pt")
 DEVICE = "mps"
 
 

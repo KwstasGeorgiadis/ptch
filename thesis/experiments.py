@@ -10,7 +10,7 @@ def fit_fixed_examples(
     queries,
     steps=1000,
     device="mps",
-    lower_lr_at=None,#/
+    lower_lr_at=None,
 ):
     torch.manual_seed(0)
 

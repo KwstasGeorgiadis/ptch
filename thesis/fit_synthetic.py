@@ -6,10 +6,10 @@ import torch
 from .experiments import fit_fixed_examples
 from .synthetic import make_synthetic_episode
 
-FAMILY = "recolour"  # "recolour" or "rotate" or 
+FAMILY = "recolour"  # "recolour" or "rotate"
 SOURCE = 1
 TARGET = 2
-TURNS = 1           # Clockwise quarter-turns: 1, 2, or 3. grid turns 
+TURNS = 1           # Clockwise quarter-turns: 1, 2, or 3.
 STEPS = 1000
 DEVICE = "mps"
 OUTPUT_FILE = Path("runs/synthetic_examples.pt")
